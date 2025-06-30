@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>西洋棋程式分享區</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">西洋棋程式分享區</h1>
+    <p class="mb-6">請點選感興趣的內容：</p>
+
+    <div class="flex flex-wrap gap-4 mb-6">
+      <button onclick="showCode('f1')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">2025/2/20 第1版</button>
+      <button onclick="showCode('f2')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">2025/2/20 第2版</button>
+      <button onclick="showCode('f3')" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">2025/3/9</button>
+      <button onclick="showCode('f4')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">2025/3/11</button>
+      <button onclick="showCode('f5')" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">2025/3/19</button>
+    </div>
+
+    <div id="code-section" class="hidden">
+      <h2 class="text-xl font-semibold mb-2">您感興趣的程式碼如下：</h2>
+      <pre class="bg-gray-200 p-4 rounded overflow-auto text-sm whitespace-pre-wrap">
+<code id="code-content">// 請選擇一個按鈕</code>
+      </pre>
+    </div>
+  </div>
+
+  <script>
+    const codes = {
+      f1: `'''初始化'''
+bot8=[' 8 ','[R]','[N]','[B]','[Q]','[K]','[B]','[N]','[R]']#1 line in board , Black player's king have been set [this is black]
+bot7=[' 7 ','[P]','[P]','[P]','[P]','[P]','[P]','[P]','[P]']
+bot6=[' 6 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot5=[' 5 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot4=[' 4 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot3=[' 3 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot2=[' 2 ',' P ',' P ',' P ',' P ',' P ',' P ',' P ',' P ']
+bot1=[' 1 ',' R ',' N ',' B ',' Q ',' K ',' B ',' N ',' R ']
+bot0=['   ','/A/','/B/','/C/','/D/','/E/','/F/','/G/','/H/']
+bot= [bot1,bot2,bot3,bot4,bot5,bot6,bot7,bot8]
+botSTR=0#棋子交換變數 ABC
+botINT=0# 123
+wordstay=0#目標棋子的數值 如[R] Q  資料暫存器
+work=1#程式是否要運行判斷
+printall='''
+print(bot8)
+print(bot7)
+print(bot6)
+print(bot5)
+print(bot4)
+print(bot3)
+print(bot2)
+print(bot1)
+print(bot0)
+'''
+
+inputSTR='''
+while True:
+    rs=input('求棋子的ABC')
+    if len(rs)==1 and rs>='A' and rs<='H':
+        botSTR=int(rs, base=18)-9
+        break
+    else:
+        print('請輸入A~H')
+'''
+
+inputINT='''
+while True:
+    botINT=int(input('求棋子的123'))
+    if botINT>8 or botINT<1:
+        print('請輸入1~8')
+    else:
+        break
+'''
+
+'''def abc(botSTR):
+    return (int(botSTR,16)-10)#int(a,b) a 你喜歡的數字 123 12E/ b a 數字的進位制
+'''
+'''
+def numberbotINT):
+    return bot(botINT-1)
+'''
+'''主程式'''
+'''
+botSTR=int(input('要移動棋子的ABC'), base=16)-9
+botINT=int(input('要移動棋子的123'))
+wordstay=bot[botINT-1][botSTR]
+'''
+exec(printall)
+time=0
+bigtime=1
+while work==1:
+    time+=1
+    if time==1:
+        print("接下來請出入主詞棋子的data")
+    elif time==2:
+        print(f'您已選取{c}棋子')
+        print("接下來請出入受詞棋子的data")
+    else:
+        time=0
+        bigtime+=1
+        continue
+    
+    exec(inputSTR)
+    exec(inputINT)
+    c=bot[botINT-1][botSTR]#資料值備份
+    print(c)
+    if time==1:
+        wordstay=bot[botINT-1][botSTR]
+        bot[botINT-1][botSTR]='   '
+    else:
+        bot[botINT-1][botSTR]=wordstay
+        if c==' K ' or c=='[K]':
+            print('checkmate')
+            if bigtime%2!=0:
+                print('white won')
+            else:
+                print('black won')
+            break
+    exec(printall)
+    if time==2 and bigtime%2!=0:
+        print("白方移動完成,請黑方開始")
+    elif time==2 and bigtime%2==0:
+        print('黑方移動完成,請白方開始')
+print("thanks for using")
+print('made by Penter QZ')
+`,
+      f2: `'''初始化'''
+bot8=[' 8 ','[R]','[N]','[B]','[Q]','[K]','[B]','[N]','[R]']#1 line in board , Black player's king have been set [this is black]
+bot7=[' 7 ','[P]','[P]','[P]','[P]','[P]','[P]','[P]','[P]']
+bot6=[' 6 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot5=[' 5 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot4=[' 4 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot3=[' 3 ','   ','   ','   ','   ','   ','   ','   ','   ']
+bot2=[' 2 ',' P ',' P ',' P ',' P ',' P ',' P ',' P ',' P ']
+bot1=[' 1 ',' R ',' N ',' B ',' Q ',' K ',' B ',' N ',' R ']
+bot0=['   ','/A/','/B/','/C/','/D/','/E/','/F/','/G/','/H/']
+bot= [bot1,bot2,bot3,bot4,bot5,bot6,bot7,bot8]
+botSTR=0#棋子交換變數 ABC
+botINT=0# 123
+wordstay=0#目標棋子的數值 如[R] Q  資料暫存器
+work=1#程式是否要運行判斷
+printall='''
+print(bot8)
+print(bot7)
+print(bot6)
+print(bot5)
+print(bot4)
+print(bot3)
+print(bot2)
+print(bot1)
+print(bot0)
+'''
+
+inputboard='''
+while True:
+  timess=0
+  right=0
+  while True:
+    cita=input("請輸入主詞棋子的棋盤位置(example: D4, A8, C5 ,E4)")
+    if len(cita)==2:
+      break
+    else:
+      print("請輸入2個字元")
+  for botbot in cita:
+    timess+=1
+    if timess==1:
+      if botbot>='A' and botbot<='H':
+          botSTR=int(botbot, base=18)-9
+          right+=1
+      else:
+        print('請輸入A~H')
+    else:
+      if botbot>'8' or botbot<'1':
+        print('請輸入1~8')
+      else:
+        botINT=int(botbot)
+        right+=1
+  if right==2:
+    break
+
+
+'''
+
+'''
+    if time==1:
+        print("接下來請出入主詞棋子的data")
+    elif time==2:
+        print(f'您已選取{c}棋子')
+        print("接下來請出入受詞棋子的data")
+    else:
+        time=0
+        bigtime+=1
+        continue
+
+'''
+
+inputSTR='''
+while True:
+    rs=input('求棋子的ABC')
+    if len(rs)==1 and rs>='A' and rs<='H':
+        botSTR=int(rs, base=18)-9
+        break
+    else:
+        print('請輸入A~H')
+'''
+
+inputINT='''
+while True:
+    botINT=int(input('求棋子的123'))
+    if botINT>8 or botINT<1:
+        print('請輸入1~8')
+    else:
+        break
+'''
+
+
+time=0
+bigtime=1
+exec(printall)
+while work==1:
+    if time==1:
+        print("接下來請出入主詞棋子的data")
+    elif time==2:
+        print(f'您已選取{c}棋子')
+        print("接下來請出入受詞棋子的data")
+    else:
+        time=0
+        bigtime+=1
+        continue
+    
+    exec(inputboard)
+    c=bot[botINT-1][botSTR]#資料值備份
+    print(c)
+    if time==1:
+        wordstay=bot[botINT-1][botSTR]
+        bot[botINT-1][botSTR]='   '
+    else:
+        bot[botINT-1][botSTR]=wordstay
+        if c==' K ' or c=='[K]':
+            print('checkmate')
+            if bigtime%2!=0:
+                print('white won')
+            else:
+                print('black won')
+            exec(printall)
+            break
+    exec(printall)
+    if time==2 and bigtime%2!=0:
+        print("白方移動完成,請黑方開始")
+    elif time==2 and bigtime%2==0:
+        print('黑方移動完成,請白方開始')
+print("thanks for using")
+print('made by Penter QZ')`,
+      f3: `import tkinter as tk
+
+#初始化
+a=tk.Tk()
+a.geometry('500x300')
+s=[]
+
+times=0
+stayS=[]
+stayO=[]
+staySl=[]#Label Subject location
+stayOl=[]#Label Object location
+
+#棋盤設定
+y8=[' R ',' N ',' B ',' Q ',' K ',' B ',' N ',' R ']
+y7=[' P ',' P ',' P ',' P ',' P ',' P ',' P ',' P ']
+y6=['   ','   ','   ','   ','   ','   ','   ','   ']
+y5=['   ','   ','   ','   ','   ','   ','   ','   ']
+y4=['   ','   ','   ','   ','   ','   ','   ','   ']
+y3=['   ','   ','   ','   ','   ','   ','   ','   ']
+y2=['(P)','(P)','(P)','(P)','(P)','(P)','(P)','(P)']
+y1=['(R)','(N)','(B)','(Q)','(K)','(B)','(N)','(R)']
+y=[y8,y7,y6,y5,y4,y3,y2,y1]
+
+#功能標籤設定
+LabelS=tk.Label(a,text=stayS)
+LabelS.grid(row=5,column=9)
+
+LabelO=tk.Label(a,text=stayO)
+LabelO.grid(row=6,column=9)
+
+LabelSl=tk.Label(a,text=f'{staySl}')#lLabel Subject location
+LabelSl.grid(row=5,column=10)
+
+LabelOl=tk.Label(a,text=f'{stayOl}')#lLabel Subject location
+LabelOl.grid(row=6,column=10)
+
+
+def move(r):
+    global times, stayS , stayO , staySl , stayOl
+    times+=1
+    if times%2!=0:
+        #將原始棋盤備份
+        stayS.append(s[r].cget("text"))
+        staySl.append(r)
+        #調整棋盤
+        s[r].config(text="   ")
+        LabelS.config(text=stayS[-1])
+        LabelSl.config(text=staySl[-1])
+    else:
+        #將原始棋盤備份
+        stayO.append(s[r].cget("text"))
+        stayOl.append(r)
+        #調整棋盤
+        s[r].config(text=f'{stayS[-1]}')
+        LabelO.config(text=stayO[-1])
+        LabelOl.config(text=stayOl[-1])
+    
+for r in range(0,64):
+    if (r//8)%2==0:
+        b=0
+    else:
+        b=1
+    if (r+b)%2==0:
+        c=a.cget("bg")
+    else:
+        c="#F58FAA"
+
+    s.append(tk.Button(a , padx=5 , pady=5 , width=2 , height=1 , text=y[r//8][r%8] , font=('Arial', 10,'bold')  # Arial 字體，大小 10，加粗
+, bg=c ,command=lambda r=r:move(r)))
+    s[r].grid(row=(r//8),column=(r%8))
+
+def back():
+    global staySl, stayS , stayO , stayOl
+    s[staySl[-1]].config(text=stayS[-1])
+    s[stayOl[-1]].config(text=stayO[-1])
+    stayS.pop(-1)
+    stayO.pop(-1)
+    staySl.pop(-1)
+    stayOl.pop(-1)
+    LabelS.config(text=stayS[-1])
+    LabelSl.config(text=staySl[-1])
+    LabelO.config(text=stayO[-1])
+    LabelOl.config(text=stayOl[-1])
+
+ButtonBack=tk.Button(a,text="back",command=back)
+ButtonBack.grid(row=4,column=10)
+
+a.mainloop()
+#3m9d`,
+      f4: `import tkinter as tk
+
+#初始化
+a=tk.Tk()
+a.geometry('500x300')
+s=[]
+
+times=0
+stayS=[]
+stayO=[]
+staySl=[]#Label Subject location
+stayOl=[]#Label Object location
+
+#棋盤設定
+y8=[' R ',' N ',' B ',' Q ',' K ',' B ',' N ',' R ']
+y7=[' P ',' P ',' P ',' P ',' P ',' P ',' P ',' P ']
+y6=['   ','   ','   ','   ','   ','   ','   ','   ']
+y5=['   ','   ','   ','   ','   ','   ','   ','   ']
+y4=['   ','   ','   ','   ','   ','   ','   ','   ']
+y3=['   ','   ','   ','   ','   ','   ','   ','   ']
+y2=['(P)','(P)','(P)','(P)','(P)','(P)','(P)','(P)']
+y1=['(R)','(N)','(B)','(Q)','(K)','(B)','(N)','(R)']
+y=[y8,y7,y6,y5,y4,y3,y2,y1]
+
+#功能標籤設定
+LabelS=tk.Label(a,text=stayS)
+LabelS.grid(row=5,column=9)
+
+LabelO=tk.Label(a,text=stayO)
+LabelO.grid(row=6,column=9)
+
+LabelSl=tk.Label(a,text=f'{staySl}')#lLabel Subject location
+LabelSl.grid(row=5,column=10)
+
+LabelOl=tk.Label(a,text=f'{stayOl}')#lLabel Subject location
+LabelOl.grid(row=6,column=10)
+
+
+def move(r):
+    global times, stayS , stayO , staySl , stayOl
+    times+=1
+    if times%2!=0:
+        if s[r].cget("text")=="   ":
+            times-=1
+        else:
+            #將原始棋盤備份
+            stayS.append(s[r].cget("text"))
+            staySl.append(r)
+            #調整棋盤
+            s[r].config(text="   ")
+            LabelS.config(text=stayS[-1])
+            LabelSl.config(text=staySl[-1])
+    else:
+        #將原始棋盤備份
+        stayO.append(s[r].cget("text"))
+        stayOl.append(r)
+        #調整棋盤
+        s[r].config(text=f'{stayS[-1]}')
+        LabelO.config(text=stayO[-1])
+        LabelOl.config(text=stayOl[-1])
+    
+for r in range(0,64):
+    if (r//8)%2==0:
+        b=0
+    else:
+        b=1
+    if (r+b)%2==0:
+        c=a.cget("bg")
+    else:
+        c="#F58FAA"
+
+    s.append(tk.Button(a , padx=5 , pady=5 , width=2 , height=1 , text=y[r//8][r%8] , font=('Arial', 10,'bold')  # Arial 字體，大小 10，加粗
+, bg=c ,command=lambda r=r:move(r)))
+    s[r].grid(row=(r//8),column=(r%8))
+
+def back():
+    global staySl, stayS , stayO , stayOl , times
+    if times==0:
+        None
+    elif times%2==0:
+        s[stayOl[-1]].config(text=stayO[-1])
+        s[staySl[-1]].config(text=stayS[-1])
+        stayS.pop(-1)
+        stayO.pop(-1)
+        staySl.pop(-1)
+        stayOl.pop(-1)
+        times-=2
+    else:
+        s[staySl[-1]].config(text=stayS[-1])
+        stayS.pop(-1)
+        staySl.pop(-1)
+        times-=1
+    LabelS.config(text=stayS[-1])
+    LabelSl.config(text=staySl[-1])
+    LabelO.config(text=stayO[-1])
+    LabelOl.config(text=stayOl[-1])
+
+ButtonBack=tk.Button(a,text="back",command=back)
+ButtonBack.grid(row=4,column=10)
+
+a.mainloop()
+#3m9d`,
+      f5: `import tkinter as tk
+
+#初始化
+a=tk.Tk()
+a.geometry('500x300')
+s=[]
+
+times=0
+stayS=[]
+stayO=[]
+staySl=[]#Label Subject location
+stayOl=[]#Label Object location
+
+#棋盤設定
+y8=[' R ',' N ',' B ',' Q ',' K ',' B ',' N ',' R ']
+y7=[' P ',' P ',' P ',' P ',' P ',' P ',' P ',' P ']
+y6=['   ','   ','   ','   ','   ','   ','   ','   ']
+y5=['   ','   ','   ','   ','   ','   ','   ','   ']
+y4=['   ','   ','   ','   ','   ','   ','   ','   ']
+y3=['   ','   ','   ','   ','   ','   ','   ','   ']
+y2=['(P)','(P)','(P)','(P)','(P)','(P)','(P)','(P)']
+y1=['(R)','(N)','(B)','(Q)','(K)','(B)','(N)','(R)']
+y=[y8,y7,y6,y5,y4,y3,y2,y1]
+
+#功能標籤設定
+LabelS=tk.Label(a,text=stayS)
+LabelS.grid(row=5,column=9)
+
+LabelO=tk.Label(a,text=stayO)
+LabelO.grid(row=6,column=9)
+
+LabelSl=tk.Label(a,text=f'{staySl}')#lLabel Subject location
+LabelSl.grid(row=5,column=10)
+
+LabelOl=tk.Label(a,text=f'{stayOl}')#lLabel Subject location
+LabelOl.grid(row=6,column=10)
+
+
+def move(r):
+    global times, stayS , stayO , staySl , stayOl
+    times+=1
+    if times%2!=0:
+        if s[r].cget("text")=="   ":
+            times-=1
+        else:
+            #將原始棋盤備份
+            stayS.append(s[r].cget("text"))
+            staySl.append(r)
+            #調整棋盤
+            s[r].config(text="   ")
+            LabelS.config(text=stayS[-1])
+            LabelSl.config(text=staySl[-1])
+    else:
+        #將原始棋盤備份
+        stayO.append(s[r].cget("text"))
+        stayOl.append(r)
+        #調整棋盤
+        s[r].config(text=f'{stayS[-1]}')
+        LabelO.config(text=stayO[-1])
+        LabelOl.config(text=stayOl[-1])
+    
+for r in range(0,64):
+    if (r//8)%2==0:
+        b=0
+    else:
+        b=1
+    if (r+b)%2==0:
+        c=a.cget("bg")
+    else:
+        c="#F58FAA"
+
+    s.append(tk.Button(a , padx=5 , pady=5 , width=2 , height=1 , text=y[r//8][r%8] , font=('Arial', 10,'bold')  # Arial 字體，大小 10，加粗
+, bg=c ,command=lambda r=r:move(r)))
+    s[r].grid(row=(r//8),column=(r%8))
+
+def back():
+    global staySl, stayS , stayO , stayOl , times
+    if times==0:
+        None
+    elif times%2==0:
+        s[stayOl[-1]].config(text=stayO[-1])
+        s[staySl[-1]].config(text=stayS[-1])
+        stayS.pop(-1)
+        stayO.pop(-1)
+        staySl.pop(-1)
+        stayOl.pop(-1)
+        times-=2
+    else:
+        s[staySl[-1]].config(text=stayS[-1])
+        stayS.pop(-1)
+        staySl.pop(-1)
+        times-=1
+    LabelS.config(text=stayS[-1])
+    LabelSl.config(text=staySl[-1])
+    LabelO.config(text=stayO[-1])
+    LabelOl.config(text=stayOl[-1])
+
+ButtonBack=tk.Button(a,text="back",command=back)
+ButtonBack.grid(row=4,column=10)
+timera=300
+timerb=300
+touch=0
+def clock(timeera, timerb):
+    global touch
+    touch+=1
+    if touch%2!=0:
+        timeera-=a.after(1000,clock(timeera,timerb))
+    else:
+        timerb-=a.after(1000,clock(timeera,timerb))
+Buttonclock=tk.Button(a,text="clock",command=lambda:clock(timera,timerb))
+Buttonclock.grid(row=4,column=9)
+LabelClocka=tk.Label(a,text=f'a{timera}')
+LabelClocka.grid(row=4,column=8)
+LabelClockb=tk.Label(a,text=f'b{timerb}')
+LabelClockb.grid(row=4,column=7)
+        
+a.mainloop()
+#3m16d`,
+    };
+
+    function showCode(key) {
+      document.getElementById("code-section").classList.remove("hidden");
+      document.getElementById("code-content").textContent = codes[key];
+    }
+  </script>
+</body>
+</html>
